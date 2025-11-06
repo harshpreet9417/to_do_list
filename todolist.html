@@ -1,0 +1,125 @@
+<!-- TASK IS TO MAKE T DO LIST WITH INPUT FIELD  WITH ADD BUTTON AND SHOW WHICH TASKS ARE GETTING ADDED USINF FOR EACH METHOD-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color:lightpink;
+            height: 100vh;
+        }
+    
+        #d1{
+            border: 5px dotted purple;
+            border-radius: 7px;
+            align-items: center;
+            height: 500px;
+            width: 400px;
+            text-align: center;
+            background-color: white;
+          
+        }
+        .h1:hover{
+            transform: scale(1.07);
+            
+
+        }
+        h1{
+            text-align: center;
+            color:maroon;
+              transition: all 0.5s ease;
+        }
+
+        #tasklist{
+            text-align: left;
+           margin-left: 5px;
+        }
+        #b1{
+            border-radius: 3px;
+            background-color:yellow;
+            box-shadow: 2px 2px 2px lightgrey;
+        }
+        
+        .editbutton{
+            background-color: lightblue;
+            border-radius: 3px;
+        }
+        .deletebutton{
+            background-color: lightcoral;
+            border-radius: 3px;
+        }
+        .task-item{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            border:solid lightgray;
+            margin-bottom: 5px;
+        }
+        .task-buttons{
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1" class="d1">
+        <form id="todolist">
+            <h1 class="h1">TO DO LIST</h1> <br>
+            <input type="text" placeholder="fill your task" id="input"> <button id="b1">ADD</button>
+
+        </form>
+        <br>
+        <div id="tasklist"></div>
+    </div>
+    
+    <script>
+        const form=document.getElementById("todolist");
+        const input=document.getElementById("input");
+        const tasklist=document.getElementById("tasklist");
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            const tasktext=input.value.trim();
+            if(tasktext !==""){
+                const taskitem=document.createElement('div');
+                taskitem.className='task-item';
+
+                const taskContent = document.createElement("span");
+                taskContent.textContent = tasktext;
+
+                const buttondiv=document.createElement("div");
+                buttondiv.className="task-buttons";
+
+                const editbutton=document.createElement("button");
+                editbutton.className="editbutton";
+                editbutton.textContent="EDIT";
+
+                editbutton.onclick=function(){
+                const newtask= prompt("edit your task",taskContent.textContent);
+                    if(newtask!==null && newtask.trim()!==""){
+                        taskContent.textContent=newtask.trim();
+                    }
+                };
+
+                const deletebutton=document.createElement("button");
+                deletebutton.className="deletebutton";
+                deletebutton.textContent="DELETE";
+                deletebutton.onclick=function(){
+                    taskitem.remove();
+                };
+                buttondiv.appendChild(editbutton);
+                buttondiv.appendChild(deletebutton);
+                taskitem.appendChild(taskContent);
+                taskitem.appendChild(buttondiv);
+                tasklist.appendChild(taskitem);
+                input.value="";
+            }
+        });
+    </script>
+</body>
+</html>
