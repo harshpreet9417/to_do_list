@@ -13,7 +13,73 @@
             background-color:lightpink;
             height: 100vh;
         }
+        #input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 60%;
+  outline: none;
+}
+
+#input:focus {
+  border-color: purple;
+  box-shadow: 0 0 5px violet;
+}
+
+#b1 {
+  border-radius: 5px;
+  padding: 8px 12px;
+  background: linear-gradient(to right, violet, pink);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#b1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px pink;
+}
+
+
+#d1 {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 20px;
+  height: 400px;
+  width:300px ;
+  background: linear-gradient(to bottom right, #fff, #ffe4f2);
+  transition: all 0.5s ease-in-out;
+}
+ #d1:hover{
+ transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(to bottom right, #fff0f8, #ffd6ef);
+ }
+h1 {
+  font-family: 'Poppins', sans-serif;
+  color: purple;
+  text-shadow: 1px 1px pink;
+  animation: glow 6s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+        font-family:'Times New Roman', Times, serif;
+        font-weight: 500;
+        color:maroon;
+        text-shadow: 0 0 5px pink, 0 0 10px violet;
+    }
+    to{
+        font-family: 'Times New Roman', Times, serif;
+       font-weight: 400 ;
+        color:#f87171;
+        text-shadow: 0 0 20px hotpink, 0 0 30px pink;
+    }
     
+}
+
+    /*
         #d1{
             border: 5px dotted purple;
             border-radius: 7px;
@@ -24,6 +90,7 @@
             background-color: white;
           
         }
+            */
         .h1:hover{
             transform: scale(1.07);
             
@@ -39,20 +106,24 @@
             text-align: left;
            margin-left: 5px;
         }
-        #b1{
-            border-radius: 3px;
-            background-color:yellow;
-            box-shadow: 2px 2px 2px lightgrey;
-        }
         
-        .editbutton{
-            background-color: lightblue;
-            border-radius: 3px;
-        }
-        .deletebutton{
-            background-color: lightcoral;
-            border-radius: 3px;
-        }
+        .editbutton, .deletebutton {
+        border: none;
+        padding: 6px 10px;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(232, 203, 60, 0.961);
+    }
+        .editbutton {
+        background: linear-gradient(to right, #7dd3fc, #60a5fa);
+}
+
+        .deletebutton {
+        background: linear-gradient(to right, #fca5a5, #f87171); 
+}
         .task-item{
             display: flex;
             justify-content:space-between;
@@ -64,6 +135,13 @@
             display: flex;
             gap: 5px;
         }
+
+        .completed {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
+    
     </style>
 </head>
 <body>
@@ -91,6 +169,9 @@
 
                 const taskContent = document.createElement("span");
                 taskContent.textContent = tasktext;
+                taskContent.onclick = function() {
+                taskContent.classList.toggle('completed');
+            };
 
                 const buttondiv=document.createElement("div");
                 buttondiv.className="task-buttons";
@@ -120,6 +201,8 @@
                 input.value="";
             }
         });
+
+      
     </script>
 </body>
 </html>
