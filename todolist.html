@@ -52,11 +52,15 @@
   background: linear-gradient(to bottom right, #fff, #ffe4f2);
   transition: all 0.5s ease-in-out;
 }
- #d1:hover{
- transform: scale(1.03);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  background: linear-gradient(to bottom right, #fff0f8, #ffd6ef);
+
+ #d1{
+    animation:fadeIn 0.6s ease-out;
  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 h1 {
   font-family: 'Poppins', sans-serif;
   color: purple;
@@ -79,18 +83,6 @@ h1 {
     
 }
 
-    /*
-        #d1{
-            border: 5px dotted purple;
-            border-radius: 7px;
-            align-items: center;
-            height: 500px;
-            width: 400px;
-            text-align: center;
-            background-color: white;
-          
-        }
-            */
         .h1:hover{
             transform: scale(1.07);
             
@@ -105,6 +97,7 @@ h1 {
         #tasklist{
             text-align: left;
            margin-left: 5px;
+          
         }
         
         .editbutton, .deletebutton {
@@ -130,10 +123,11 @@ h1 {
             align-items: center;
             border:solid lightgray;
             margin-bottom: 5px;
+            border-radius: 5px;
         }
         .task-buttons{
             display: flex;
-            gap: 5px;
+            gap: 7px;
         }
 
         .completed {
