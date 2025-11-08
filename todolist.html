@@ -10,9 +10,17 @@
             display:flex;
             justify-content: center;
             align-items: center;
-            background-color:lightpink;
+            background:linear-gradient(90deg, #ff6ec4, #7873f5) ;
+            animation:hueRotate 7s linear infinite;
             height: 100vh;
         }
+          
+       @keyframes hueRotate{
+         0% { filter: hue-rotate(0deg); }
+         100% { filter: hue-rotate(360deg); }
+        
+       }
+
         #input {
   padding: 8px;
   border-radius: 5px;
